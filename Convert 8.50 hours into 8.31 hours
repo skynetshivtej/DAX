@@ -1,0 +1,1 @@
+FORMAT(TIME(TRUNC([Duration Hours],0),(UserAvability[Duration Hours]-TRUNC(UserAvability[Duration Hours],0))*60,0),"HH:mm:ss")
