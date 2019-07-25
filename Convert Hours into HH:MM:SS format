@@ -1,0 +1,18 @@
+Break = VAR Duration = UserAvability[Duration Hours Break]*3600
+VAR Hours = INT ( Duration / 3600)
+
+VAR Minutes = INT ( MOD( Duration - ( Hours * 3600 ),3600 ) / 60)
+
+VAR Seconds = ROUNDUP(MOD ( MOD( Duration - ( Hours * 3600 ),3600 ), 60 ),0)
+VAR H = IF ( LEN ( Hours ) = 1, CONCATENATE ( "0", Hours ),CONCATENATE ( "", Hours ))
+VAR M = IF (LEN ( Minutes ) = 1, CONCATENATE ( "0", Minutes ),CONCATENATE ( "", Minutes ))
+VAR S = IF (
+        LEN ( Seconds ) = 1,
+        CONCATENATE ( "0", Seconds ),
+        CONCATENATE ( "", Seconds )
+    )
+RETURN
+    CONCATENATE (
+        H,
+        CONCATENATE ( ":", CONCATENATE ( M, CONCATENATE ( ":", S ) ) )
+)
